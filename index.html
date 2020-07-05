@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手写Vue1.0</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{counter}}</p>
+        <p k-text="counter"></p>
+        <p k-html="desc"></p>
+        <button @click="onclick">点击</button>
+    </div>
+
+    <script src="gvue.js"></script>
+
+    <script>
+        const app = new KVue({
+            el: '#app',
+            data: {
+                counter: 1,
+                desc: '冬瓜冬瓜<span style="color:red">我是西瓜</span>'
+            },
+            methods: {
+                onclick() {
+                    // this通过代理绑定到组件实例上去，成功打印出counter
+                    console.log('this.count = ' + this.counter);
+                },
+            },
+        })
+        setInterval(() => {
+            app.counter++
+        }, 1000);
+
+    </script>
+</body>
+
+</html>

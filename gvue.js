@@ -144,7 +144,7 @@ class Compile {
             else if (this.isEvent(attrName)) {
                 const dir = this.eventName(attrName)
                 // 执行指令
-                this[dir] && this[dir](exp)
+                this[dir] && this[dir](node, exp)
             }
 
         })
@@ -162,8 +162,8 @@ class Compile {
     }
 
     // click函数指令
-    click(exp) {
-        this.$el.addEventListener('click', this.$vm[exp])
+    click(node, exp) {
+        node.addEventListener('click', this.$vm[exp])
     }
 
     // input函数指令
